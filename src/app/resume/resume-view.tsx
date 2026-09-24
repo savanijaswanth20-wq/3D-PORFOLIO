@@ -13,10 +13,29 @@ export default function ResumeView() {
 
   return (
     <div className="flex min-h-screen flex-col font-sans bg-background text-foreground">
-      {/* Print styles to ensure the resume prints clean without headers, backgrounds or buttons */}
+      {/* Print & theme styles to ensure the resume is crisp and legible */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
+            .resume-sheet {
+              background-color: #ffffff !important;
+              color: #18181b !important;
+            }
+            .resume-sheet h1,
+            .resume-sheet h2,
+            .resume-sheet h3,
+            .resume-sheet p,
+            .resume-sheet span,
+            .resume-sheet li,
+            .resume-sheet div {
+              color: #18181b !important;
+            }
+            .resume-sheet a {
+              color: #2563eb !important;
+            }
+            .resume-sheet .border-b {
+              border-color: #52525b !important;
+            }
             @media print {
               body { background: white !important; color: black !important; }
               header, .no-print { display: none !important; }
