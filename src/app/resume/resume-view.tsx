@@ -3,8 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, Printer, Phone, Mail, Linkedin, MapPin } from "lucide-react";
+import { ArrowLeft, Printer, Download, Phone, Mail, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const RESUME_PATH = "/Savvani_Venkata_Jaswanth_Resume.pdf";
 
 export default function ResumeView() {
   const handlePrint = () => {
@@ -55,13 +57,13 @@ export default function ResumeView() {
         }}
       />
 
-      {/* Top bar: back (left) + print/save (right) */}
+      {/* Top bar: back (left) + download & print/save (right) */}
       <div className="no-print mx-auto w-full max-w-4xl shrink-0 px-4 pt-16 md:pt-24">
         <motion.div
           initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="mb-6 flex items-center justify-between gap-4"
+          className="mb-6 flex flex-wrap items-center justify-between gap-3"
         >
           <Link
             href="/"
@@ -70,10 +72,25 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <Button onClick={handlePrint} className="flex items-center gap-2">
-            <Printer className="h-4 w-4" />
-            Print / Save
-          </Button>
+          <div className="flex items-center gap-2.5">
+            <Button asChild className="flex items-center gap-2 shadow-sm">
+              <a
+                href={RESUME_PATH}
+                download="Savvani_Venkata_Jaswanth_Resume.pdf"
+              >
+                <Download className="h-4 w-4" />
+                Download PDF
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handlePrint}
+              className="flex items-center gap-2"
+            >
+              <Printer className="h-4 w-4" />
+              Print / Save
+            </Button>
+          </div>
         </motion.div>
       </div>
 
