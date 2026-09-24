@@ -36,13 +36,13 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <Button>
+          <Button asChild>
             <a
               href={RESUME_PATH}
-              download
-              className="flex gap-2 text-sm transition-colors hover:text-foreground"
+              download="Savvani_Venkata_Jaswanth_Resume.pdf"
+              className="flex items-center gap-2 text-sm"
             >
-              <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+              <Download className="h-4 w-4" />
               Download PDF
             </a>
           </Button>
@@ -51,7 +51,6 @@ export default function ResumeView() {
 
       {/* PDF viewer — centered on mobile (short A4 card), top-aligned on desktop (tall) */}
       <div className="mx-auto flex w-full max-w-4xl flex-1 items-center justify-center px-2 pb-6 md:items-start md:px-4 md:pb-24">
-        {/* opacity-only animation: a transformed ancestor would trap the fixed doodle FAB */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
