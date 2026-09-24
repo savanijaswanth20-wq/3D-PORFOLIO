@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, Printer, Download, Phone, Mail, Linkedin, MapPin } from "lucide-react";
+import { ArrowLeft, Printer, Download, ExternalLink, Phone, Mail, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const RESUME_PATH = "/Savvani_Venkata_Jaswanth_Resume.pdf";
@@ -72,7 +72,7 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center gap-2.5">
             <Button asChild className="flex items-center gap-2 shadow-sm">
               <a
                 href={RESUME_PATH}
@@ -80,6 +80,20 @@ export default function ResumeView() {
               >
                 <Download className="h-4 w-4" />
                 Download PDF
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="flex items-center gap-2"
+            >
+              <a
+                href={RESUME_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="h-4 w-4" />
+                Open PDF
               </a>
             </Button>
             <Button
