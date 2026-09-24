@@ -40,7 +40,7 @@ export default function ResumeView() {
             }
             @media print {
               body { background: white !important; color: black !important; }
-              header, .no-print { display: none !important; }
+              header, .no-print, nav, footer { display: none !important; }
               .resume-sheet {
                 box-shadow: none !important;
                 border: none !important;
@@ -114,7 +114,7 @@ export default function ResumeView() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="resume-sheet w-full rounded-2xl bg-white text-zinc-900 shadow-2xl border border-zinc-200 p-6 sm:p-10 md:p-14 font-serif selection:bg-orange-100"
+          className="resume-sheet w-full rounded-2xl bg-white text-zinc-900 shadow-2xl border border-zinc-200 p-5 sm:p-10 md:p-14 font-serif selection:bg-orange-100 break-words"
           style={{ fontFamily: "'Times New Roman', Times, serif" }}
         >
           {/* Header */}
@@ -122,35 +122,35 @@ export default function ResumeView() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl tracking-wide uppercase font-normal text-zinc-950">
               SAVVANI VENKATA JASWANTH
             </h1>
-            <div className="mt-2.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs sm:text-sm text-zinc-700">
+            <div className="mt-2.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs sm:text-sm text-zinc-700">
               <span className="inline-flex items-center gap-1">
-                <Phone className="h-3.5 w-3.5 text-zinc-800" />
+                <Phone className="h-3.5 w-3.5 text-zinc-800 shrink-0" />
                 <a href="tel:+916304702907" className="hover:underline">
                   +91-6304702907
                 </a>
               </span>
-              <span className="text-zinc-400">|</span>
+              <span className="text-zinc-400 hidden sm:inline">|</span>
               <span className="inline-flex items-center gap-1">
-                <Mail className="h-3.5 w-3.5 text-zinc-800" />
-                <a href="mailto:savanijaswanth20@gmail.com" className="hover:underline">
+                <Mail className="h-3.5 w-3.5 text-zinc-800 shrink-0" />
+                <a href="mailto:savanijaswanth20@gmail.com" className="hover:underline break-all">
                   savanijaswanth20@gmail.com
                 </a>
               </span>
-              <span className="text-zinc-400">|</span>
+              <span className="text-zinc-400 hidden sm:inline">|</span>
               <span className="inline-flex items-center gap-1">
-                <Linkedin className="h-3.5 w-3.5 text-zinc-800" />
+                <Linkedin className="h-3.5 w-3.5 text-zinc-800 shrink-0" />
                 <a
                   href="https://www.linkedin.com/in/savvani-venkata-jaswanth"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:underline"
+                  className="hover:underline break-all"
                 >
                   LinkedIn: savvani-venkata-jaswanth
                 </a>
               </span>
             </div>
             <div className="mt-1 flex items-center justify-center gap-1 text-xs sm:text-sm text-zinc-700">
-              <MapPin className="h-3.5 w-3.5 text-red-600" />
+              <MapPin className="h-3.5 w-3.5 text-red-600 shrink-0" />
               <span>Bangalore, Andhra Pradesh, India</span>
             </div>
           </header>
