@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ["motion", "framer-motion"],
   cacheComponents: true,
 
   async headers() {

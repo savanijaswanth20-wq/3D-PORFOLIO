@@ -25,7 +25,7 @@ const config = {
     "Tirupati",
   ],
   author: "Savvani Venkata Jaswanth",
-  email: "savanijaswanth20@gmail.com",
+  email: "savavnijaswanth@gmail.com",
   phone: "+91-6304702907",
   location: "Bangalore, Andhra Pradesh, India",
   site: "https://jaswanth.dev",
@@ -40,7 +40,7 @@ const config = {
   social: {
     linkedin: "https://www.linkedin.com/in/savvani-venkata-jaswanth",
     github: "https://github.com/savanijaswanth20-wq",
-    email: "mailto:savanijaswanth20@gmail.com",
+    email: "mailto:savavnijaswanth@gmail.com",
     twitter: "https://x.com",
     instagram: "https://instagram.com",
     facebook: "https://facebook.com",

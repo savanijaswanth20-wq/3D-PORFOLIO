@@ -132,8 +132,8 @@ export default function ResumeView() {
               <span className="text-zinc-400 hidden sm:inline">|</span>
               <span className="inline-flex items-center gap-1">
                 <Mail className="h-3.5 w-3.5 text-zinc-800 shrink-0" />
-                <a href="mailto:savanijaswanth20@gmail.com" className="hover:underline break-all">
-                  savanijaswanth20@gmail.com
+                <a href="mailto:savavnijaswanth@gmail.com" className="hover:underline break-all">
+                  savavnijaswanth@gmail.com
                 </a>
               </span>
               <span className="text-zinc-400 hidden sm:inline">|</span>
