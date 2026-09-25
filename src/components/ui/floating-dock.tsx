@@ -87,9 +87,8 @@ const FloatingDockDesktop = ({
   items: { title: string; icon: React.ReactNode }[];
   className?: string;
 }) => {
-  let mouseX = useMotionValue(Infinity);
+  const mouseX = useMotionValue(Infinity);
   const [showHint, setShowHint] = useState(true);
-  const timer = useRef<NodeJS.Timeout>(null);
   const controls = useAnimation();
   useEffect(() => {
     if (showHint) {
@@ -110,9 +109,8 @@ const FloatingDockDesktop = ({
     }
     return () => {
       controls.stop();
-      if (timer.current) clearInterval(timer.current);
     };
-  }, [showHint]);
+  }, [showHint, controls]);
   return (
     <div className="relative h-fit flex items-center justify-center pointer-events-auto">
       <motion.div

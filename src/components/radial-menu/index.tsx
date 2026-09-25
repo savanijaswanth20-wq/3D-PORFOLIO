@@ -234,7 +234,7 @@ export default function RadialMenu() {
       intensityRef.current = 0;
     } else {
     }
-  }, [triggerConfetti, stopChargeTone]);
+  }, [triggerConfetti, stopChargeTone, socket]);
 
   const handleContextMenu = useCallback((e: MouseEvent) => {
     if (suppressMenuRef.current) {

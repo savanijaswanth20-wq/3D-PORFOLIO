@@ -103,12 +103,18 @@ function SlidingNumber({
   },
   ...props
 }: SlidingNumberProps) {
-  const prevNumberRef = React.useRef<number>(0);
-
   const effectiveNumber = React.useMemo(
     () => (Math.abs(Number(number))),
     [number],
   );
+
+  const [prevNumber, setPrevNumber] = React.useState(effectiveNumber);
+  const [currentNumber, setCurrentNumber] = React.useState(effectiveNumber);
+
+  if (effectiveNumber !== currentNumber) {
+    setPrevNumber(currentNumber);
+    setCurrentNumber(effectiveNumber);
+  }
 
   const formatNumber = React.useCallback(
     (num: number) =>
@@ -121,7 +127,7 @@ function SlidingNumber({
   const newIntStr =
     padStart && newIntStrRaw?.length === 1 ? '0' + newIntStrRaw : newIntStrRaw;
 
-  const prevFormatted = formatNumber(prevNumberRef.current);
+  const prevFormatted = formatNumber(prevNumber);
   const [prevIntStrRaw = '', prevDecStrRaw = ''] = prevFormatted.split('.');
   const prevIntStr =
     padStart && prevIntStrRaw.length === 1
@@ -140,10 +146,6 @@ function SlidingNumber({
       ? prevDecStrRaw.slice(0, newDecStrRaw.length)
       : prevDecStrRaw.padEnd(newDecStrRaw.length, '0');
   }, [prevDecStrRaw, newDecStrRaw]);
-
-  React.useEffect(() => {
-    prevNumberRef.current = effectiveNumber;
-  }, [effectiveNumber]);
 
   const intDigitCount = newIntStr?.length ?? 0;
   const intPlaces = React.useMemo(

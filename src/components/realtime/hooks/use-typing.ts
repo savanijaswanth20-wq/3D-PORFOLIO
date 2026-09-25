@@ -4,7 +4,9 @@ import type { Socket } from 'socket.io-client';
 export const useTyping = (socket: Socket | null, currentUser: { name: string } | undefined, scrollToBottom: (smooth: boolean) => void, isAtBottomRef: RefObject<boolean>) => {
   const [typingUsers, setTypingUsers] = useState<Map<string, { username: string, timeout: NodeJS.Timeout }>>(new Map());
   const typingUsersRef = useRef(typingUsers);
-  typingUsersRef.current = typingUsers;
+  useEffect(() => {
+    typingUsersRef.current = typingUsers;
+  }, [typingUsers]);
   const lastTypingSent = useRef<number>(0);
 
   // Handle typing events

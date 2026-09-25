@@ -13,7 +13,7 @@ import {
 import { cn } from '@/lib/utils';
 import { getGithubStars } from '@/actions/github-stars';
 import { SlidingNumber } from '../sliding-number';
-import { Fragment, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type FormatNumberResult = { number: string[]; unit: string };
 
@@ -53,9 +53,8 @@ function GitHubStarsButton({
 }: GitHubStarsButtonProps) {
   const motionVal = useMotionValue(0);
   const springVal = useSpring(motionVal, transition);
-  const motionNumberRef = useRef(0);
+  const [motionNumber, setMotionNumber] = useState(0);
   const isCompletedRef = useRef(false);
-  const [, forceRender] = useReducer((x) => x + 1, 0);
   const [stars, setStars] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const [displayParticles, setDisplayParticles] = useState(false);
@@ -81,10 +80,7 @@ function GitHubStarsButton({
   useEffect(() => {
     const unsubscribe = springVal.on('change', (latest: number) => {
       const newValue = Math.round(latest);
-      if (motionNumberRef.current !== newValue) {
-        motionNumberRef.current = newValue;
-        forceRender();
-      }
+      setMotionNumber((prev) => (prev !== newValue ? newValue : prev));
       if (stars !== 0 && newValue >= stars && !isCompletedRef.current) {
         isCompletedRef.current = true;
         setIsCompleted(true);
@@ -98,8 +94,8 @@ function GitHubStarsButton({
     if (stars > 0) motionVal.set(stars);
   }, [motionVal, stars]);
 
-  const fillPercentage = Math.min(100, (motionNumberRef.current / stars) * 100);
-  const formattedResult = formatNumber(motionNumberRef.current, formatted);
+  const fillPercentage = Math.min(100, (motionNumber / (stars || 1)) * 100);
+  const formattedResult = formatNumber(motionNumber, formatted);
   const ghostFormattedNumber = formatNumber(stars, formatted);
 
   const renderNumberSegments = (

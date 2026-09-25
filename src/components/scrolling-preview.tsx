@@ -68,10 +68,7 @@ const ScrollingPreview = ({
   // Preload the wallpaper so a missing/404 file falls back to the gradient
   // instead of rendering a broken background.
   useEffect(() => {
-    if (!bg) {
-      setBgReady(false);
-      return;
-    }
+    if (!bg) return;
     let cancelled = false;
     const img = new window.Image();
     img.onload = () => !cancelled && setBgReady(true);

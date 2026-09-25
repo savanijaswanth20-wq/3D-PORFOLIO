@@ -4,16 +4,16 @@ import type { Socket } from "socket.io-client";
 export type ConnectionStatus = "connected" | "connecting" | "disconnected";
 
 export const useConnectionStatus = (socket: Socket | null): ConnectionStatus => {
-  const [status, setStatus] = useState<ConnectionStatus>("connecting");
+  const [status, setStatus] = useState<ConnectionStatus>(() =>
+    socket ? (socket.connected ? "connected" : "connecting") : "disconnected"
+  );
 
   useEffect(() => {
-    if (!socket) {
-      setStatus("disconnected");
-      return;
-    }
+    if (!socket) return;
 
-    if (socket.connected) setStatus("connected");
-    else setStatus("connecting");
+    if (socket.connected) {
+      setStatus("connected");
+    }
 
     const onConnect = () => setStatus("connected");
     const onDisconnect = () => setStatus("disconnected");
