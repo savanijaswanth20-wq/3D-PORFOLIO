@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 import { Skill, SkillNames, SKILLS } from "@/data/constants";
-import { sleep } from "@/lib/utils";
+import { cn, sleep } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePreloader } from "./preloader";
 import { useTheme } from "next-themes";
@@ -480,9 +480,12 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   }, [splineApp]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="fixed inset-0" />}>
       <Spline
-        className="w-full h-full fixed opacity-0 pointer-events-none"
+        className={cn(
+          "w-full h-full fixed inset-0 z-0 pointer-events-auto transition-opacity duration-700",
+          splineApp ? "opacity-100" : "opacity-0"
+        )}
         ref={splineContainer}
         onLoad={(app: Application) => {
           setSplineApp(app);
